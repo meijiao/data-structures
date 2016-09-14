@@ -1,30 +1,74 @@
+// var Queue = function () {
+//   var someInstance = {};
+//   var counter = 0;
+//   var next = 0;
+//   // Use an object with numeric keys to store values
+//   var storage = {};
+
+//   // Implement the methods below
+
+//   someInstance.enqueue = function(value) {
+//     storage[counter] = value;
+//     counter ++;
+//     console.log ('enqueing now: ', counter, ': ', counter, ' storage[counter]: ', storage[counter]);
+//   };
+
+//   someInstance.dequeue = function() {
+//     console.log ('dequeing now: ', counter, ': ', counter, ' storage[counter]: ', storage[counter]);
+//     //debugger;
+//     var result = storage[next];
+//     if (counter > 0) {
+//       counter --;
+//     }
+//     delete storage[counter];
+//     next ++;
+//     return result;
+//   };
+
+//   someInstance.size = function() {
+//     return counter;
+//   };
+
+//   return someInstance;
+// };
+
+// // for (var prop in storage) {
+
+// //}
+
 var Queue = function () {
   var someInstance = {};
-  var counter = 0;
-  var next = 0;
+  
   // Use an object with numeric keys to store values
   var storage = {};
 
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    counter ++;
-    storage[counter] = value;
+    var key = Object.keys(storage).length;
+    storage[key] = value;
   };
 
   someInstance.dequeue = function() {
-    var result = storage[next];
-    if (counter > 0) {
-      counter --;
+    console.log ('storage: ', storage)
+    var first = storage[0];
+    delete storage[0];
+
+    var length = Object.keys(storage).length;
+    for (var i = 0; i < length; i ++) {
+      if (i < length - 1) {
+        storage[i] = storage[i + 1]; 
+      }
     }
-    delete storage[counter];
-    next ++;
-    return result;
+    console.log ('first: ', first);
+    return first;
+
   };
 
   someInstance.size = function() {
-    return counter;
+    return Object.keys(storage).length;
   };
 
   return someInstance;
 };
+
