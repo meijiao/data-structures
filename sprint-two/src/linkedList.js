@@ -8,16 +8,19 @@ var LinkedList = function() {
       var newNode = Node(value);
       list.head = newNode;
       list.tail = newNode;
-    }
-    if (list.tail) {
+    } else {
       var previous = list.tail;
       var newNode = Node(value);
       previous.next = newNode;
       list.tail = newNode;
     }
+    // console.info('AddToTail' + value + ': list is now: ', list);
   };
 
   list.removeHead = function() {
+    var newHead = list.head.next;
+    list.head = newHead;
+    // console.info('removeHead: list is now: ', list);
   };
 
   list.contains = function(target) {
