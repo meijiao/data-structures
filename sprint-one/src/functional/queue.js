@@ -61,6 +61,8 @@ var Queue = function () {
         storage[i] = storage[i + 1]; 
       }
     }
+    delete storage[length];
+
     console.log ('first: ', first);
     console.log ('storage after dequeue: ', storage);
     return first;
@@ -68,6 +70,7 @@ var Queue = function () {
   };
 
   someInstance.size = function() {
+    // debugger;
     return Object.keys(storage).length;
   };
 

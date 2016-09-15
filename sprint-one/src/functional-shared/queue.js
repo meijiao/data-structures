@@ -27,6 +27,7 @@ queueMethods.dequeue = function() {
       this.storage[i] = this.storage[i + 1]; 
     }
   }
+  delete this.storage[length];
   return first;
 };
 
