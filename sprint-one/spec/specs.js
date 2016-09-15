@@ -121,8 +121,8 @@ define([
       });
 
       it('reports a size of 1 after adding two items and removing one', function() {
-        queue.enqueue('a');
-        queue.enqueue('b');
+        queue.enqueue('e');
+        queue.enqueue('f');
         queue.dequeue();
         expect(queue.size()).to.equal(1);
       });
@@ -145,17 +145,17 @@ define([
 
     describe('queue-specific behavior', function() {
       it('removes the least recently added of two items', function() {
-        queue.enqueue('a');
-        queue.enqueue('b');
-        expect(queue.dequeue()).to.equal('a');
+        queue.enqueue('x');
+        queue.enqueue('y');
+        expect(queue.dequeue()).to.equal('x');
       });
 
       it('removes the oldest item, after newer items have already been added and removed', function() {
-        queue.enqueue('a');
-        queue.enqueue('b');
+        queue.enqueue('k');
+        queue.enqueue('l');
         queue.dequeue();
-        queue.enqueue('c');
-        expect(queue.dequeue()).to.equal('b');
+        queue.enqueue('m');
+        expect(queue.dequeue()).to.equal('l');
       });
     });
 
