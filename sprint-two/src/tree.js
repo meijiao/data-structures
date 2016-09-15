@@ -12,7 +12,6 @@ var treeMethods = {};
 treeMethods.addChild = function(value) {
   var child = Tree(value);
   this.children.push(child);
-  console.log('addChild: tree is: ', this);
 };
 
 treeMethods.contains = function(target) {
@@ -22,7 +21,6 @@ treeMethods.contains = function(target) {
       result = true;
     }
     for (var i = 0; i < child.children.length; i++) {
-      console.log ('child.children[i] is', child.children[i]);
       find(child.children[i]);
     }
   };
