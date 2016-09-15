@@ -46,21 +46,23 @@ var Queue = function () {
 
   someInstance.enqueue = function(value) {
     var key = Object.keys(storage).length;
+    console.log ('key ', key);
     storage[key] = value;
   };
 
   someInstance.dequeue = function() {
-    console.log ('storage: ', storage)
+    console.log ('storage before dequeue: ', storage);
     var first = storage[0];
     delete storage[0];
 
     var length = Object.keys(storage).length;
     for (var i = 0; i < length; i ++) {
-      if (i < length - 1) {
+      if (i < length) {
         storage[i] = storage[i + 1]; 
       }
     }
     console.log ('first: ', first);
+    console.log ('storage after dequeue: ', storage);
     return first;
 
   };
