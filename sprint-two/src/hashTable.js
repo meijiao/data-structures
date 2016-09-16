@@ -37,6 +37,15 @@ HashTable.prototype.retrieve = function(k) {
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+  var bucketList = this._storage.get(index);
+  
+  bucketList.forEach(function(tuple, index) {
+    if (tuple[0] === k) {
+      bucketList.splice(index, 1);
+    } else {
+      throw 'cannot find key in bucket list';
+    }
+  }); 
 };
 
 
