@@ -27,18 +27,17 @@ Graph.prototype.contains = function(value) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(value) {
   var instance = this;
-  var currNode;
-  this.storage.forEach(function(node, index) {
+  var currNode, indexForRemove;
+  instance.storage.forEach(function(node, index) {
     if (node.value === value) {
       currNode = node;
-      console.log ('currNode:', currNode);
-      instance.storage.splice(index, 1);
+      indexForRemove = index;
     }
   });
   currNode.edges.forEach(function(edge) {
-    console.log ('currNode:', currNode);
     instance.removeEdge(value, edge);
   });
+  instance.storage.splice(indexForRemove, 1);
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -47,7 +46,6 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   var index = this.getNodeIndex(fromNode);
   if (this.storage[index].edges.indexOf(toNode) > -1) {
     result = true;
-    console.log('found the edge');
   } 
   return result;
 };
@@ -84,7 +82,7 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 Graph.prototype.removeEdge = function(fromNode, toNode) {
   var indexA = this.getNodeIndex(fromNode);
   var nodeA = this.storage[indexA];
-  debugger;
+
   var position = nodeA.edges.indexOf(toNode);
   nodeA.edges.splice(position, 1);
 
@@ -97,6 +95,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  this.storage.forEach(function(node) {
+    cb(node);
+  });
 };
 
 /*
