@@ -28,9 +28,7 @@ HashTable.prototype.retrieve = function(k) {
   bucketList.forEach(function(tuple) {
     if (tuple[0] === k) {
       result = tuple[1];
-    } else {
-      throw 'cannot find key in bucket list';
-    }
+    } 
   }); 
   return result;
 };
@@ -42,8 +40,6 @@ HashTable.prototype.remove = function(k) {
   bucketList.forEach(function(tuple, index) {
     if (tuple[0] === k) {
       bucketList.splice(index, 1);
-    } else {
-      throw 'cannot find key in bucket list';
     }
   }); 
 };
