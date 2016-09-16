@@ -27,10 +27,17 @@ Graph.prototype.contains = function(value) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(value) {
   var instance = this;
+  var currNode;
   this.storage.forEach(function(node, index) {
     if (node.value === value) {
+      currNode = node;
+      console.log ('currNode:', currNode);
       instance.storage.splice(index, 1);
     }
+  });
+  currNode.edges.forEach(function(edge) {
+    console.log ('currNode:', currNode);
+    instance.removeEdge(value, edge);
   });
 };
 
@@ -77,6 +84,7 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 Graph.prototype.removeEdge = function(fromNode, toNode) {
   var indexA = this.getNodeIndex(fromNode);
   var nodeA = this.storage[indexA];
+  debugger;
   var position = nodeA.edges.indexOf(toNode);
   nodeA.edges.splice(position, 1);
 
