@@ -30,6 +30,27 @@ BinarySearchTree.prototype.insert = function(val) {
   findNode(this);
 };
 
+BinarySearchTree.prototype.contains = function(target) {
+  var result;
+  var walkTree = function (node) {
+    if (node.value === target) {
+      result = true;
+      return;
+    }
+    if (node.left === undefined && node.right === undefined) {
+      result = false;
+      return;
+    }
+    if (node.value < target) {
+      walkTree(node.right);
+    }
+    if (node.value > target) {
+      walkTree(node.left);
+    }
+  };
+  walkTree(this);
+  return result;
+};
 
 
 
