@@ -1,3 +1,7 @@
+// Time Complexity:
+// push, pop: constant O(1)
+// search: linear O(n)
+//
 var Stack = function() {
   var someInstance = {};
   var counter = 0;
