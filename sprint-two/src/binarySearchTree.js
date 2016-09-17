@@ -5,7 +5,7 @@ var BinarySearchTree = function(value) {
 };
 
 BinarySearchTree.prototype.insert = function(val) {
-  //debugger;
+  // time complexity: logarithmic: O(log n)
   var newNode = new BinarySearchTree(val);
 
   var findNode = function(node) {
@@ -31,6 +31,7 @@ BinarySearchTree.prototype.insert = function(val) {
 };
 
 BinarySearchTree.prototype.contains = function(target) {
+  // time complexity: logarithmic O(log n)
   var result;
   var walkTree = function (node) {
     if (node.value === target) {
@@ -53,6 +54,7 @@ BinarySearchTree.prototype.contains = function(target) {
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
+  // time complexity: linear O(n)
 
   // Helper function to go deeper on each node
   var goDeeper = function (node) {
@@ -84,6 +86,3 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
   goDeeper(this);
 
 };
-/*
- * Complexity: What is the time complexity of the above functions?
- */
