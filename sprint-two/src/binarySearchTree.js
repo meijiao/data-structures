@@ -52,8 +52,38 @@ BinarySearchTree.prototype.contains = function(target) {
   return result;
 };
 
+BinarySearchTree.prototype.depthFirstLog = function(cb) {
 
+  // Helper function to go deeper on each node
+  var goDeeper = function (node) {
+    // if node exists
+    if (node) {
+      // execute callback on node
+      cb(node.value);
+    }
+    // check if there's a left node
+    if (node.left) {
+      // go deeper on left node (recurse)
+      goDeeper (node.left);
+    }
+    // check if there's a right node
+    if (node.right) {
+      // go deeper on right node (recurse)
+      goDeeper (node.right);
+    }
+    // if left node is empty, return
+    if (!node.left) {
+      return;
+    }
+    // if right is empty, return
+    if (!node.right) {
+      return;
+    }
+  };
 
+  goDeeper(this);
+
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
