@@ -1,5 +1,5 @@
-var arrLimit = 2000000;
-var bigArr = Array.from(new Array(limit), x => Math.floor(Math.random() * limit + 1));
+//var arrLimit = 2000000;
+//var bigArr = Array.from(new Array(arrLimit), x => Math.floor(Math.random() * arrLimit + 1));
 
 var result = {};
 result.gap = 3000000;
